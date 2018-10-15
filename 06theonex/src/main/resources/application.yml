@@ -1,0 +1,51 @@
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=5,maximumSize=500,expireAfterWrite=10s
+      available: true
+      levels:
+      - key: level1
+        spec: initialCapacity=5,maximumSize=100,expireAfterWrite=3s
+        available: true
+      - key: level2
+        spec: initialCapacity=5,maximumSize=100,expireAfterWrite=10s
+        available: true
+      - key: level3
+        spec: initialCapacity=5,maximumSize=100,expireAfterWrite=86400s
+        available: true
+      - key: sportlevel
+        spec: initialCapacity=5,maximumSize=300,expireAfterWrite=3600s
+        available: true
+      - key: matchLevel
+        spec: initialCapacity=5,maximumSize=300,expireAfterWrite=2s
+        available: true
+    redis:
+      expire: 10
+      available: true
+      delay: 0
+      levels:
+      - key: level1
+        expire: 3
+        delay: 2600
+        available: true
+      - key: level2
+        expire: 3
+        delay: 9600
+        available: true
+      - key: level3
+        expire: 3
+        delay: 9600
+        available: false
+      - key: sportlevel
+        expire: 20
+        delay: 0
+        available: true
+      - key: matchLevel
+        expire: 3
+        delay: 2600
+        available: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
